@@ -19,7 +19,19 @@ public class InvLine {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    public InvLine(Product product) {
+        this.product = product;
+    }
+
     private Integer qty;
+
+    public Integer getQty() {
+        return qty;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty = qty;
+    }
 
     public int getId() {
         return id;
@@ -35,13 +47,5 @@ public class InvLine {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Integer getQty() {
-        return qty;
-    }
-
-    public void setQty(Integer qty) {
-        this.qty = qty;
     }
 }

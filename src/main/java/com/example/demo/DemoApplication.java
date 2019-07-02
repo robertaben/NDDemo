@@ -58,22 +58,19 @@ class ProductApi {
     }
 
     @GetMapping("/productQuantity")
-    public List invLineLeftJoin() {
-        return invLineRepository.invLineLeftJoin();
+    public List invLineJoin() {
+        return invLineRepository.invLineJoin();
     }
 
 }
 
 @RepositoryRestResource(path = "product")
 interface ProductRepository extends JpaRepository<Product, Integer> {
-
-
 }
 
 @RepositoryRestResource(path = "invLine")
 interface invLineRepository extends JpaRepository<InvLine, Integer> {
-
-     @Query("SELECT new com.example.demo.entities.ProductQuantity(p.id, i.qty) FROM InvLine i LEFT JOIN i.product p GROUP BY p.id")
-     List<ProductQuantity> invLineLeftJoin();
+     @Query("SELECT new com.example.demo.entities.ProductQuantity(p.id, sum(i.qty)) FROM InvLine i JOIN i.product p GROUP BY p")
+     List<ProductQuantity> invLineJoin();
 }
 

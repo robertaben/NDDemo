@@ -14,3 +14,8 @@ GET http://localhost:8080/product/all?page=0&size=2
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/product/productQuantity
+Accept: application/json
+
+###
